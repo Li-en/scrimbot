@@ -3,6 +3,11 @@ from discord.ext import commands, tasks
 from discord.ui import Button, View
 from datetime import datetime, timedelta
 import asyncio
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+DISCORD_TOKEN = os.getenv('BOT_TOKEN')
 
 # botsetup ( ˘▽˘)っ♨
 intents = discord.Intents.default()
@@ -285,7 +290,7 @@ async def help(ctx):
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user.name} ({bot.user.id})')
-    check_match_time_reminder.start()  # Start the reminder task
+    check_match_time_reminder.start()  # Start the reminder 
 
 # Run the bot with the token
 bot.run('BOT_TOKEN')
