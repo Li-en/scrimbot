@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-DISCORD_TOKEN = os.getenv('BOT_TOKEN')
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
 # botsetup ( ˘▽˘)っ♨
 intents = discord.Intents.default()
@@ -15,7 +15,7 @@ intents.members = True
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-# (ノಠ益ಠ)ノ彡┻━┻ the stupid vairables
+# (ノಠ益ಠ)ノ彡┻━┻ the stupid variables
 team_a = []
 team_b = []
 leaders = {}  # Team Leaders is stored
@@ -29,7 +29,7 @@ match_format = None
 current_round = 0
 round_winners = {"team_a": 0, "team_b": 0}
 sub_queue = []  # Sub Queue
-reminder_time = timedelta(minutes=15)  # Reminder DM timere - default 15 minutes before the match
+reminder_time = timedelta(minutes=15)  # Reminder DM timer - default 15 minutes before the match
 
 # Discord bot SetupView for the initial setup
 class SetupView(View):
@@ -266,7 +266,7 @@ async def socials(ctx):
     await ctx.send("Check out my socials: Twitter: @XXXXX | Twitch: twitch.tv/XXXX")
 
 @bot.command()
-async def help(ctx):
+async def bot_help(ctx):
     help_message = (
         "**Scrim Bot Commands**\n\n"
         "**!setup** - Set up the scrim match with team names, match time, announcement channel, and match format.\n"
@@ -293,4 +293,4 @@ async def on_ready():
     check_match_time_reminder.start()  # Start the reminder 
 
 # Run the bot with the token
-bot.run('BOT_TOKEN')
+bot.run(DISCORD_TOKEN)
